@@ -1,0 +1,78 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "1 - Synthetic demo (fast)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--demo",
+        "--accounts",
+        "10",
+        "--per-account",
+        "14",
+        "--epochs",
+        "1",
+        "--width",
+        "16",
+        "--layers",
+        "1"
+      ]
+    },
+    {
+      "name": "2 - Kaggle CSV (initial run)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--data",
+        "data/raw/fraudTrain.csv",
+        "--accounts",
+        "25",
+        "--per-account",
+        "100",
+        "--epochs",
+        "2"
+      ]
+    },
+    {
+      "name": "3 - Kaggle out-of-time test (8 GB pilot)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/run.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--data",
+        "data/raw/fraudTrain.csv",
+        "--test-data",
+        "data/raw/fraudTest.csv",
+        "--accounts",
+        "200",
+        "--per-account",
+        "0",
+        "--test-accounts",
+        "300",
+        "--test-per-account",
+        "100",
+        "--epochs",
+        "8",
+        "--width",
+        "32",
+        "--layers",
+        "2",
+        "--output",
+        "outputs/oot_test"
+      ],
+      "env": {
+        "OMP_NUM_THREADS": "2",
+        "MKL_NUM_THREADS": "2"
+      }
+    }
+  ]
+}
